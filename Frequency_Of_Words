@@ -1,0 +1,29 @@
+Question : Take a sentence as an input, split it on the basis of space and then count the frequency of each word and output it in a map. 
+Solution : 
+import java.util.*;
+import java.util.Scanner;
+
+public class MyClass {
+  public static void main(String args[]) {
+     Scanner in=new Scanner(System.in);
+        String sentence=in.nextLine().toLowerCase();
+        String[] words=sentence.split(" ");
+        System.out.println(Arrays.toString(words));
+        Map<String, Integer> map = new HashMap<>();
+        for(String word : words){
+            if(map.containsKey(word)){
+                map.put(word,map.get(word) + 1);
+            }
+            else{
+                map.put(word,1);
+            }
+        }
+        System.out.println(map);
+
+  }
+}
+
+Things I learnt : 
+1. String.split(" ") --> split on the basis of spaces ,String.split("\\s+") --> multiple spaces/tabs basis split
+2. Map methods : map.containsKey(), map.get(), map.put()   
+3. map.get(key) returns the value associated with the key, to get key, we use either keySet() or entrySet().

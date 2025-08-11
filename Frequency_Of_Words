@@ -23,7 +23,21 @@ public class MyClass {
   }
 }
 
+Code optimisation : 
+This : 
+if(map.containsKey(word)){
+  map.put(word,map.get(word) + 1);
+}
+else{
+   map.put(word,1);
+}
+Can be better written as : map.put(word,map.getOrDefault(word,0) + 1);
+
+
+
 Things I learnt : 
 1. String.split(" ") --> split on the basis of spaces ,String.split("\\s+") --> multiple spaces/tabs basis split
 2. Map methods : map.containsKey(), map.get(), map.put()   
 3. map.get(key) returns the value associated with the key, to get key, we use either keySet() or entrySet().
+4. map.getOrDefault(key, defaultValue) method.
+

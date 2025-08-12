@@ -35,3 +35,6 @@ map → The whole map object that stores the data.
 map.entrySet() → A set of key-value pairs (best for iterating when you need both). 
 Whats the need ? Because map itself is not a directly iterable list of key-value pairs — entrySet() breaks it down into objects that hold both the key and the value 
 together, making iteration possible.
+
+2. map.values() --> This returns a collection so we can use collection methods on it like max().
+Hence, line 16-21 can be simply written as  :  int maxFreq = Collections.max(map.values());

@@ -1,0 +1,16 @@
+Question : Find the maximum element in an array. 
+Solution : 
+import java.util.*;
+public class MyClass {
+  public static void main(String args[]) {
+   int[] arr={-1,-2,-4,-7,-5,8,0};
+   int temp=arr[0];
+   for(int i=1;i<=arr.length-1;i++){
+       temp=Math.max(temp,arr[i]);
+   }
+    System.out.println(temp);
+  }
+}
+
+Things I learnt : 
+This is the best way to find maximum element with like o(n) complexity. 

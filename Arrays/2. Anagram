@@ -1,0 +1,32 @@
+Question : Find out if two strings are anagram of each other. 
+
+Solution : 
+Converting into array and sorting and comparing. 
+Sol: import java.util.*;
+public class MyClass {
+  public static void main(String args[]) {
+    String a = "silent";
+    String b = "listen";
+    
+    char[] a_arr = a.toCharArray();
+    char[] b_arr = b.toCharArray();
+
+    Arrays.sort(a_arr);
+    Arrays.sort(b_arr);
+
+    if (Arrays.equals(a_arr, b_arr)) {
+        System.out.println("true");
+    } else {
+        System.out.println("false");
+    }
+  }
+}
+
+Things I learnt --> 
+1. Difference between ==, .equals(), Array.equals()
+== --> Compares memory address (reference), not content. 
+.equals -->  Same as == (reference check), unless overridden.
+Arrays.equals() --> Static method → Arrays content is compared, element-by-element. Works for primitive arrays aur object arrays.
+
+2. Arrays.sort() does not return anything (its return type is void).
+It sorts the given array in place, meaning it modifies the original array directly instead of creating and returning a new sorted array.

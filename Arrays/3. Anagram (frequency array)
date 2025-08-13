@@ -1,0 +1,32 @@
+Question : Check if two strings are anagrams of each other.
+
+Solution :
+ import java.util.*;
+
+public class MyClass {
+    public static void main(String[] args) {
+        String a = "baac";
+        String b = "cabc";
+        
+        int[] freq=new int[26];
+        
+        for(char c : a.toCharArray()){
+            int index=c-'a';
+            freq[index]++;    
+        }
+        for(char ch : b.toCharArray()){
+            int index=ch-'a';
+            freq[index]--;
+        }
+        for (int val : freq) {
+            if (val != 0) {
+                System.out.println(false);
+                return;
+            }
+        }
+        System.out.println(true); 
+    }
+}
+
+Things I learnt : 
+We create the index by subtracting the ASCII value of 'a' from the character, i.e., index = c - 'a', so 'a' maps to 0, 'b' to 1, and so on.

@@ -3,6 +3,41 @@ Given two strings, determine if they are anagrams of each other.
 Two strings are anagrams if they contain the same characters in the same frequencies, but possibly in a different order.
 Example: "listen" and "silent" are anagrams, but "hello" and "bello" are not.
 
+Solution : 
+import java.util.*;
+
+public class MyClass {
+    public static void main(String[] args) {
+        String a = "baac";
+        String b = "caba";
+        Map<Character,Integer> map=new HashMap<>();
+        
+        if(a.length() != b.length()){
+            System.out.println("false");
+        }
+        
+        for(char c: a.toCharArray()){
+            map.put(c,map.getOrDefault(c,0) + 1);
+        }
+        
+        for(char ch: b.toCharArray()){
+            if(!map.containsKey(ch) || map.get(ch) == 0){
+                System.out.println("false");
+                return;
+            }
+            map.put(ch,map.get(ch) - 1);
+        }
+        System.out.println(true);
+    }
+}
+
+Approach to check if two strings are anagrams using a Map:
+1.Create a HashMap<Character, Integer> to store character frequencies from the first string.
+2.Iterate over the second string, decreasing the corresponding frequency in the map.
+3.If a character is missing in the map or its frequency becomes negative, they are not anagrams.
+4.If all characters match in frequency, they are anagrams.
+
+Time Complexity: O(n)
 
 
 

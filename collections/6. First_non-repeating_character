@@ -1,0 +1,27 @@
+Question : Given a sentence, find the first non-repeating character.
+Example :
+Input: "swiss"
+Output: w
+
+Solution : 
+import java.util.*;
+
+public class MyClass {
+    public static void main(String[] args) {
+     String input="swiss";
+     Map<Character,Integer> map = new LinkedHashMap<>();
+     
+     for(char ch : input.toLowerCase().toCharArray()){
+         map.put(ch,map.getOrDefault(ch,0) + 1);
+     }
+     System.out.println(map);
+       
+      for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+        if (entry.getValue() == 1) {
+        System.out.println(entry.getKey());
+        break; 
+        }
+      } 
+}
+}
+

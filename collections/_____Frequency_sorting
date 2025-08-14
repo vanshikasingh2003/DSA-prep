@@ -1,0 +1,45 @@
+Question : 
+Given a sentence, count frequency of each word and print them in ascending order of frequency.
+If two words have the same frequency, sort them in alphabetical order.
+like: "apple ball cat apple ball dog" 
+apple → 2  
+ball → 2  
+cat → 1  
+dog → 1
+
+cat 1  
+dog 1  
+apple 2  
+ball 2
+
+Solution :
+
+import java.util.*;
+public class MyClass {
+    public static void main(String[] args) {
+        String sentence = "apple ball cat apple ball do";
+        Map<String,Integer> map=new HashMap<>();
+        String[] words=sentence.toLowerCase().split(" ");
+        
+        for(String word: words){
+            map.put(word,map.getOrDefault(word,0) + 1);
+        }
+        List<Map.Entry<String,Integer>> entryList=new ArrayList<>(map.entrySet());
+        
+        Collections.sort(entryList, (e1, e2) -> {
+        int freqCompare = e1.getValue().compareTo(e2.getValue());
+        if (freqCompare == 0) {
+        return e1.getKey().compareTo(e2.getKey());
+        }
+        return freqCompare;
+        });
+        for (Map.Entry<String, Integer> entry : entryList) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+        
+    }
+}
+
+Requires : 
+1. Lambda expression understanding.
+2. Comparator and comparable 

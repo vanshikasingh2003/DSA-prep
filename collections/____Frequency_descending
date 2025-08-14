@@ -34,5 +34,10 @@ public class MyClass {
     }
 }
 
+Things I learnt : 
+1. To print the frequency of each character including the spaces, convert to lower case and directly to a character array. 
+
+
+
 To Be studied : 
 1. sorting logic 

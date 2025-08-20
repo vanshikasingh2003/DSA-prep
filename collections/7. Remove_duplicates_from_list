@@ -1,0 +1,66 @@
+Question : List<Integer> nums = Arrays.asList(1, 2, 2, 3, 4, 4, 5);
+Task: Make a new list which has no repeated elements.
+
+Solution : 
+Approach 1 : Time complexity O(n^2) cuz 
+ans.contains() takes O(n) time for each iteration.
+Since it runs n times inside the loop, the overall time complexity becomes O(n²).
+
+import java.util.*;
+public class MyClass {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1, 2, 2, 3, 4, 4, 5);
+        System.out.println(nums);
+        List<Integer> ans=new ArrayList<>();
+        for(int i=0;i<nums.size();i++){
+            if(ans.contains(nums.get(i))){
+                continue;
+            }
+            else{
+                ans.add(nums.get(i));
+            }
+        }
+        System.out.println(ans);   
+    }
+}
+
+Approach 2 : Using HashSet because it removes duplicates automatically. Same output, time O(n), space O(n).
+public class MyClass {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1, 2, 2, 3, 4, 4, 5);
+        List<Integer> ans=new ArrayList<>();
+        Set<Integer> set=new HashSet<>();
+        for(int num:nums){
+            if(!set.contains(num)){
+                ans.add(num);
+                set.add(num);
+            }
+        }
+        System.out.println(ans);  
+    }
+}
+
+Approach 3: Only worsk with sorted array. Using pointers and swapping. Time complexity --> O(n) and space complexity O(1).
+import java.util.*;
+public class MyClass {
+    public static void main(String[] args) {
+      
+      List<Integer> nums = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 4, 4, 5));
+       int j=1;
+       for(int i=1;i<nums.size();i++){
+           if(!nums.get(i).equals(nums.get(i-1))){
+               nums.set(j,nums.get(i));
+               j++;
+           }
+       }
+      System.out.println(nums.subList(0,j));
+        
+    }
+}
+
+Finally: 
+1st approach (ans.contains) → O(n²), O(n)
+2nd approach (HashSet) → O(n), O(n)
+3rd approach (in-place overwrite) → O(n), O(1) (most efficient)
+
+

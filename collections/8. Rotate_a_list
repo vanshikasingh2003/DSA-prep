@@ -1,0 +1,62 @@
+Question : 
+Given a list of integers nums and an integer k, rotate the list to the right by k steps, where k is non-negative.
+Example : 
+Input:
+nums = [1,2,3,4,5,6,7], k = 3
+Output:
+[5,6,7,1,2,3,4]
+
+Solution 
+Approach 1 : Time complexity O(n x k ) Space --> O(1)
+public class MyClass {
+    public static void main(String[] args) {
+        List<Integer> nums = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+        int k = 5;
+
+        int n=nums.size();
+        k = k % n;                           // calculating effective rotations
+        for(int i=0;i<k;i++){
+            int last=nums.remove(n-1);
+            nums.add(0,last);
+        }
+        System.out.println(nums); 
+    }
+}
+
+Approach 2 : Rotate Array using Reversal Algorithm - time complexity --> O(n) Space --> O(1)
+Reverse entire array
+Reverse first k elements
+Reverse remaining n-k elements
+
+public class MyClass {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+        int k=7;
+        int n = arr.length;
+        k=k%n;
+        reverse(arr,0,n-1);
+        reverse(arr,0,k-1);
+        reverse(arr,k,n-1);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    static void reverse(int[] arr, int start, int end) {
+        while(start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}
+
+Things I learnt : 
+1. Why are we calculating effective rotations ? 
+Say the size of array is 5, every 5 rotations, its gonna be the same array. Hence if k is greater than the size of array we need to calculate effective rotations. 
+Array = [1, 2, 3, 4, 5], n = 5
+
+k = 7 (we need 7 rotations)
+But after every 5 rotations, the array resets.
+So, effective rotations = k % n = 7 % 5 = 2
+Result → We only need to rotate the array 2 times.

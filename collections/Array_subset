@@ -1,0 +1,44 @@
+Questions : Given two arrays arr1[] and arr2[], check whether arr2 is a subset of arr1.
+Example : arr1 = [1, 2, 3, 4, 5, 6]  
+arr2 = [2, 4, 6]  
+Output → Yes (arr2 is a subset of arr1)
+
+Solution : 
+Approach 1 : 
+Time: O(m × n)
+(m = size of arr2, n = size of main)
+Space: O(1) (no extra data structure used).
+
+public class MyClass {
+    public static void main(String[] args) {
+        List<Integer> main= Arrays.asList(1, 2, 3, 4, 5, 6,7);   //  
+        int[] arr2 = {2,4,6,7};
+        
+        for(int i=0;i<arr2.length;i++){
+            if(!main.contains(arr2[i])){
+                System.out.println("false");
+                return;
+            }
+        }
+         System.out.println("true");   
+    }
+}
+
+// Set<Integer> main = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7)); reduces time complexity to O(m+n), how ? 
+In the List approach, main.contains(x) performs a linear search inside the list.
+This means, for every lookup, it takes O(n) time to find an element.
+Since we are doing this check m times (for each element in arr2), the total time becomes O(m × n).
+
+In the HashSet approach, we use hashing internally.
+The contains(x) operation in a HashSet works in O(1) average case, because it directly jumps to the correct bucket/slot using the hash value (like direct index access).
+
+👉 So now, main.contains(x) is O(1) instead of O(n).
+We only need to perform this check m times.
+
+Therefore:
+Building the HashSet takes O(n).
+Checking all m elements takes O(m).
+✔️ Overall time complexity = O(n + m).
+
+We are storing all elements of arr1 in a HashSet.
+Extra space = O(n).

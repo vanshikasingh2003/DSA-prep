@@ -44,6 +44,34 @@ public class MyClass {
     }
 }
 
-things I learnt : 
+Approach 3 : Only works if sorted
+Time = O(n + m)
+Space = O(1)
+public class MyClass {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 2, 3, 4};
+        int[] arr2 = {2, 2, 4, 6};
+        List<Integer> ans = new ArrayList<>();
+        int i = 0, j = 0;
+        
+        while(i < arr1.length && j < arr2.length){
+            if(arr1[i] == arr2[j]){
+                ans.add(arr1[i]);
+                i++;
+                j++;
+            } 
+            else if(arr1[i] < arr2[j]){
+                i++;
+            } 
+            else {
+                j++;
+            }
+        }
+        System.out.println(ans);
+    }
+}
+
+Things I learnt : 
 List.contains(x) = Linear Search (O(n))
 HashSet.contains(x) = Hash Lookup (O(1) avg)
+Hence, complexity difference.

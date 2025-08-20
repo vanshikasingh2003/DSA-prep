@@ -1,0 +1,49 @@
+Question : "Find the intersection of two arrays".
+Examples : 
+arr1 = [1, 2, 2, 3, 4]  
+arr2 = [2, 2, 4, 6]  
+Output = [2, 2, 4]
+
+Solution : 
+Approach 1 : 
+Total Time = O(n × m)
+Space = O(1) 
+public class MyClass {
+    public static void main(String[] args) {
+        List<Integer> main= Arrays.asList(10, 20, 30, 40, 50);
+        List<Integer> ans= new ArrayList<>();
+        int[] arr2 = {30, 40, 60, 70};
+        
+        for(int i=0;i<arr2.length;i++){
+            if(main.contains(arr2[i])){
+                ans.add(arr2[i]);
+            }
+            else{
+                continue;
+            }
+        }
+         System.out.println(ans);   
+    }
+}
+
+Approach 2 : 
+Total Time = O(n + m)
+Space = O(n)
+public class MyClass {
+    public static void main(String[] args) {
+        List<Integer> main= Arrays.asList(10, 20, 30, 40, 50);
+        List<Integer> ans= new ArrayList<>();
+        int[] arr2 = {30, 40 ,50 ,60, 70};
+        Set<Integer> set=new HashSet<>(main);
+        for(int n: arr2){
+            if(set.contains(n)){
+                ans.add(n);
+            }
+        }
+         System.out.println(ans);  
+    }
+}
+
+things I learnt : 
+List.contains(x) = Linear Search (O(n))
+HashSet.contains(x) = Hash Lookup (O(1) avg)

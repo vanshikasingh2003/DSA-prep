@@ -1,0 +1,35 @@
+Question : "Given an array, find the first non-repeating element."
+
+Solution : 
+Approach 1 : Using a frequency map Time : O(n) Space O(n)
+public class MyClass {
+    public static void main(String[] args) {
+       int[] arr = {9, 4, 9, 6, 7, 4};
+       Map<Integer,Integer> map=new LinkedHashMap<>();
+
+       for(int num : arr){
+           map.put(num,map.getOrDefault(num,0) + 1);
+       }
+       for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+            if(entry.getValue() == 1){
+                System.out.println(entry.getKey());
+                return;
+            } }; } }
+
+Approach 2 : Brute force O(n^2)
+public class MyClass {
+    public static void main(String[] args) {
+       int[] arr = {9, 4, 9, 6, 7, 4};
+       for(int i=0; i<arr.length; i++){  
+           boolean isRepeating = false;
+           
+           for(int j=0; j<arr.length; j++){
+               if(i != j && arr[i] == arr[j]){
+                   isRepeating = true;
+                   break;
+               }
+           }
+           if(!isRepeating){
+               System.out.println(arr[i]);
+               break;
+           }}}}

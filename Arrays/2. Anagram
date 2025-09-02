@@ -2,7 +2,7 @@ Question : Find out if two strings are anagram of each other.
 
 Solution : 
 Converting into array and sorting and comparing. 
-Sol: import java.util.*;
+Sol: 
 public class MyClass {
   public static void main(String args[]) {
     String a = "silent";

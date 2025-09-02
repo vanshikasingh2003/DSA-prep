@@ -1,0 +1,31 @@
+3304. Find the K-th Character in String Game I.
+Solution :
+
+Approach 1 : 
+class Solution {
+    StringBuilder word = new StringBuilder("a");
+
+    public char kthCharacter(int k) {
+        // keep generating until word length >= k
+        while (word.length() < k) {
+            getWord();
+        }
+        return word.charAt(k - 1);
+    }
+
+    void getWord() {
+        StringBuilder temp = new StringBuilder();
+        int len = word.length();
+
+        for (int i = 0; i < len; i++) {
+            char c = word.charAt(i);
+            if (c == 'z') {
+                temp.append('a');
+            } else {
+                temp.append((char)(c + 1));
+            }
+        }
+        word.append(temp);  } }
+
+Approach 2 : Solve using recursion 
+

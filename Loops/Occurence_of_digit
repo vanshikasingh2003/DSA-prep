@@ -1,0 +1,17 @@
+Question : count the number of times a digit occurs.
+Solution :
+public class MyClass {
+  public static void main(String args[]) {
+    int num=77725037;
+    int count =0;
+    while(num >0){
+    if(num%10 == 7){
+        count++;
+    }
+     num=num/10;
+    }
+    System.out.println(count);
+  }
+}
+Time comlexity:O(d) = O(log₁₀(num))
+Space Complexity : O(1)

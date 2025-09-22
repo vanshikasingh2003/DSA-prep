@@ -1,0 +1,23 @@
+Question : https://leetcode.com/problems/find-numbers-with-even-number-of-digits/description/
+Solution : 
+Time : O(n) Space : O(1)
+class Solution {
+    public int findNumbers(int[] nums) {
+        int counter=0;
+       for(int i=0;i<nums.length;i++){
+        int digits = digitCounter(nums[i]);
+        if(digits % 2 == 0){
+            counter++;
+        }
+       }
+       return counter; 
+    }
+    public int digitCounter(int n){
+       int count=0;
+       while(n>0){
+           n=n/10;
+           count++;
+       }
+       return count;
+   }
+}

@@ -1,0 +1,20 @@
+Question : https://leetcode.com/problems/create-target-array-in-the-given-order/description/
+Solution :
+Time complexity: O(n^2) Space O(n)
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index) {
+        List<Integer> target=new ArrayList<>();
+        for(int i=0;i<index.length;i++){
+            target.add(index[i],nums[i]);
+        }
+        int[] result = new int[target.size()];
+        for (int i = 0; i < target.size(); i++) {
+            result[i] = target.get(i);
+        }
+        return result;
+    }
+}
+On average, each insertion can take up to O(n) for the whole array.
+You do this for all n elements → O(n²) overall.
+
+Approach 2 : Time Complexity : O(n) Space: O(n)

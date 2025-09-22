@@ -11,3 +11,4 @@ class Solution {
     }
 }
 
+Can be done in O(1) space, using encoding**.

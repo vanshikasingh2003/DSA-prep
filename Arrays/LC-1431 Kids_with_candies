@@ -1,0 +1,74 @@
+Question : https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/
+Solution : Time : O(n) Space: O(n)
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int maxnum=max(candies);
+        List<Boolean> ans=new ArrayList<>();
+        for(int i=0;i<candies.length;i++){
+            if(candies[i] + extraCandies >= maxnum){
+                ans.add(true);
+            }
+            else{
+                ans.add(false);
+            }
+        }
+        return ans;
+        
+    }
+   public int max(int[] arr) {
+    int max = arr[0]; 
+    for (int i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max; 
+}
+}
+
+
+Approach 2 : Same time and space but more compact.
+class Solution {
+    public boolean[] kidsWithCandies(int[] candies, int extraCandies) {
+        int maxnum=max(candies);
+        boolean[] ans = new boolean[candies.length];
+        for(int i=0;i<candies.length;i++){
+            ans[i] = (candies[i] + extraCandies >= maxnum);  //this will return either true or false
+        }
+        return ans;
+        
+    }
+   public int max(int[] arr) {
+    int max = arr[0]; 
+    for (int i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max; 
+}
+}
+
+
+
+
+
+
+Things to note :
+Why List<Boolean> is more space-heavy than boolean[]?
+
+--boolean[] (primitive array)
+Stores primitive boolean values directly.
+Memory: ~1 byte per element (plus small array header).
+Very compact and efficient.
+Example:
+boolean[] ans = new boolean[n];
+
+--List<Boolean> (e.g., ArrayList<Boolean>)
+Stores references to Boolean objects.
+Each element = reference (4–8 bytes) → points to a Boolean object (~16+ bytes).
+Uses autoboxing (true/false → Boolean.TRUE / Boolean.FALSE).
+Much heavier in memory and slower due to object overhead.
+Example:
+List<Boolean> ans = new ArrayList<>();
+ans.add(true);  // autoboxed into Boolean object

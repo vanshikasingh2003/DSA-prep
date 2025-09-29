@@ -1,0 +1,47 @@
+Question : https://leetcode.com/problems/create-target-array-in-the-given-order/description/
+Solution : 
+Approach 1 : 
+Loop (building target ArrayList)
+target.add(index[i], nums[i]): inserting at an arbitrary index in an ArrayList requires shifting elements to the right.
+Worst case: O(n) per insertion.
+For n elements → O(n²) in total.
+Copying into result array
+One pass through target: O(n).
+Total Time Complexity = O(n²)
+
+Space : 
+target list stores up to n elements → O(n).
+result array of size n → O(n).
+Total Space Complexity = O(n)
+ 
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index) {
+        List<Integer> target=new ArrayList<>();
+        for(int i=0;i<index.length;i++){
+            target.add(index[i],nums[i]);
+        }
+        int[] result = new int[target.size()];
+        for (int i = 0; i < target.size(); i++) {
+            result[i] = target.get(i);
+        }
+        return result;
+    }
+}
+
+Approach 2:
+Time Complexity = O(n²) Space Complexity = O(n)
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index) {
+        int n = nums.length;
+        int[] target = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j > index[i]; j--) {
+                target[j] = target[j - 1];
+            }
+            target[index[i]] = nums[i];
+        }
+
+        return target;
+    }
+}

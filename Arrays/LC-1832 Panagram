@@ -1,0 +1,38 @@
+Question : https://leetcode.com/problems/check-if-the-sentence-is-pangram/
+Solution : 
+Approach 1 : Just create a set and store all uniques and check if they are 26 in number. 
+Time : O(n) Space : O(1) 
+Space : 
+Set storage → in worst case, it stores 26 lowercase letters only.
+So space = O(1) (constant space, because it doesn’t grow with n, it’s capped at 26).
+No extra arrays or maps used
+
+class Solution {
+    public boolean checkIfPangram(String sentence) {
+        Set<Character> letters = new HashSet<>();
+        for (char ch : sentence.toCharArray()) {
+            if (ch >= 'a' && ch <= 'z') { // ensure lowercase letters
+                letters.add(ch);
+            }
+        }
+        return letters.size() == 26;
+    }
+}
+
+Things I learnt :
+----> Why HashSet is Best for Pangram
+Pangram only asks:
+“Does each letter a–z appear at least once?”
+That’s a uniqueness/presence check, not a frequency count.
+HashSet fits perfectly because:
+Adding to a set ignores duplicates automatically.
+After processing, if letters.size() == 26, then all letters are present.
+No need to track counts or order.
+Boolean array of size 26 is just as good (even faster because it avoids hashing), but HashSet is cleaner and easier to read in interviews.
+
+---> When HashMap is Needed
+HashMap (frequency map) is better if the question requires more than presence:
+“Each letter must appear exactly once”  (frequency check)
+“Find the most frequent letter” 
+“Find missing letters” and their counts 
+So HashMap = presence + frequency.

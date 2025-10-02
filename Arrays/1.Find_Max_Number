@@ -12,5 +12,6 @@ public class MyClass {
   }
 }
 
+
 Things I learnt : 
 This is the best way to find maximum element with like o(n) complexity. 

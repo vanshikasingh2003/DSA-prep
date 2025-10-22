@@ -1,0 +1,17 @@
+Question : https://leetcode.com/problems/search-insert-position/description/
+Solution : Time : O(n) Space : O(1)
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= target) {
+                return i;
+            }
+        }
+        return nums.length;
+    }
+}
+
+Things I learnt  :
+1. If the target exists → returns its index.
+2. If the target is smaller than some element → returns that position.
+3. If it’s greater than all → returns nums.length (end of array).

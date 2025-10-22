@@ -15,3 +15,25 @@ Things I learnt  :
 1. If the target exists → returns its index.
 2. If the target is smaller than some element → returns that position.
 3. If it’s greater than all → returns nums.length (end of array).
+
+Approach 2 (Binary Search): Time  : O(log n) 
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length-1;
+
+        while(low<=high){
+            int mid=low + (high-low) / 2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if(nums[mid] < target ){
+                low = mid+1;
+            }
+            else{    
+                high = mid-1;
+            }
+        }
+        return low;
+    }
+}

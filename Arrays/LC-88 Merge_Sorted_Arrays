@@ -1,0 +1,45 @@
+Question : https://leetcode.com/problems/merge-sorted-array/description/
+Solution :
+Approach 1: Time : O((m + n) log(m + n)) Space : O(1)
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        for(int i=0;i<n;i++){
+        nums1[m]=nums2[i];
+        m++;
+        }
+        Arrays.sort(nums1);
+        System.out.println(nums1);
+    }
+}
+
+Time Complexity : 
+Sorting the combined array: O((m + n) log(m + n))
+(Because Arrays.sort() in Java uses a variant of Dual-Pivot QuickSort for primitives.)
+
+Approach 2 : Time : O(m+n)    Space : O(m)
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int[] temp=new int[m];
+        for(int i=0;i<m;i++){
+            temp[i]=nums1[i];
+        }
+        int i=0;
+        int j=0;
+        int k=0;
+
+        while(i<m && j<n){
+            if(temp[i] < nums2[j]){
+                nums1[k++]=temp[i++];
+            }
+            else{
+                nums1[k++]=nums2[j++];
+            }
+        }
+        while(i<m){
+            nums1[k++]=temp[i++];
+        }
+        while(j<n){
+            nums1[k++]=nums2[j++];
+        }
+    }
+}

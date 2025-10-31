@@ -1,0 +1,23 @@
+Question : https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+Solution :
+Time : O(n) Space : O(1) 
+Most Optimal : Maintaining the max profit instead of checking all the combinations
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price; // new minimum
+            } else if (price - minPrice > maxProfit) {
+                maxProfit = price - minPrice; // new best profit
+            }
+        }
+        return maxProfit;
+    }
+}
+
+
+
+

@@ -44,4 +44,4 @@ public class LinkedList {
         
         l1.print();
     }
-}\
+}

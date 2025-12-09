@@ -1,0 +1,78 @@
+import java.io.*;
+
+class Node {
+    int data;
+    Node next;
+    
+    Node(int x){
+        data = x;
+        next = null;
+    }
+}
+
+public class LinkedList {
+    Node head;
+    
+    LinkedList insertAtEnd(int x) { 
+        Node temp = new Node(x);
+        if(head == null){
+            head = temp;
+        } else {
+            Node t = head;
+            while(t.next != null){
+                t = t.next;
+            }
+            t.next = temp;
+        }
+        return this;
+    }
+
+    void print(){
+        Node t = head;
+        while(t != null){
+            System.out.print(t.data + " -> ");
+            t = t.next;
+        }
+        System.out.println();
+    }
+    
+   LinkedList insertAtMid(int pos, int x){
+        Node temp= new Node(x);
+        
+        //inserting at head 
+        if(pos == 0){
+            temp.next=head;
+            head=temp;
+            return this;
+        }
+        
+        Node t=head;
+        
+         for(int i = 0; i < pos - 1 && t != null; i++){
+             t = t.next;
+            }
+            
+         // If pos is beyond list size
+    if(t == null){
+        System.out.println("Position out of bounds!");
+        return this;
+    }
+     temp.next = t.next;
+    t.next = temp;
+
+    return this;
+        
+    }
+    
+
+    public static void main(String args[]){
+        LinkedList l1 = new LinkedList();
+        l1.insertAtEnd(10);
+        l1.insertAtEnd(20);
+        l1.insertAtEnd(30);
+        l1.insertAtMid(3, 15);
+
+        
+        l1.print();
+    }
+}

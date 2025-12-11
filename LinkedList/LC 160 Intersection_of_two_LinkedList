@@ -1,0 +1,45 @@
+https://leetcode.com/problems/intersection-of-two-linked-lists/description/
+Solution : Time : O(n + m) Space : O(n + m)
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Stack<ListNode> s1=new Stack<>();
+        Stack<ListNode> s2=new Stack<>();
+        ListNode t1=headA;
+        ListNode t2=headB;
+
+         while(t1!=null){
+            s1.push(t1);
+            t1 = t1.next;
+        }
+        while(t2!=null){
+            s2.push(t2);
+            t2 = t2.next;
+        }
+         ListNode intersection = null;
+         while (!s1.isEmpty() && !s2.isEmpty()) {
+            if (s1.peek() == s2.peek()) {
+                intersection = s1.pop();
+                s2.pop();
+            } else {
+                break;
+            }
+        }
+        return intersection;    
+    }
+}
+
+Note :
+Method	Returns Top Element	               Removes It
+peek()	 Yes	                                No
+pop()	   Yes	                                Yes
